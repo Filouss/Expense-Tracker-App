@@ -1,0 +1,617 @@
+:root {
+    --widgetHex: #16191f;
+    --widgetColor: 22,25,31,0.5;
+    --widgetBorder: #1c1c1f;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--widgetBorder); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d3939;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    margin: 0;
+    color: #e6e6e6;
+    overflow: auto;
+    background-image: linear-gradient(to bottom right, rgb(46, 46, 46), rgb(100, 100, 82)) ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#root{
+    height: 100%;
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* homepage ---------------------------------------------------------------- */
+
+.homepage{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.logo svg{
+    width: 60px;
+    height: 60px;
+}
+
+.logo {
+    width: 80px;
+    height: 100%;
+}
+
+.topBar{
+    background-color: rgba(var(--widgetColor));
+    width: 90%;
+    border: 2px solid var(--widgetBorder);
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 80px;
+}
+
+.topStatWrapper{
+    background-color: #1f1f1f;
+    height: 100%;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.topStatTitle{
+    border-bottom: #e6e6e6 1px solid;
+    padding: 3px;
+}
+
+.appBanner{
+    display: flex;
+    align-items: center;
+}
+
+.appTitle{
+    font-size: 18pt;
+    color: rgb(165, 113, 16);
+}
+
+.content{
+    display: flex;
+    width: 90%;
+    height: 80%;
+    gap: 40px;
+}
+
+.sideBar {
+    background-color: rgba(var(--widgetColor));
+    border: 2px solid var(--widgetBorder);
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 5px;
+    gap: 5%;
+    overflow: hidden;
+}
+
+.recentsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+}
+
+.recents-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.content .main-widget{
+    background-color: rgba(var(--widgetColor));
+    border-radius: 25px;
+    border: 2px solid var(--widgetBorder);
+    width: 100%;
+    /* padding: 30px 0px; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.mainWidgetWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    min-height: 650px;
+}
+
+.main-widget #graph{
+    width:70%;
+    max-width:700px;
+    flex: 1 1 70%;
+}
+
+.main-widget #pieChart{
+    width:30%;
+    max-width:500px;
+    flex: 1 1 30%;
+}
+
+.mainWidgetHeader {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+    width: 100%;
+    padding-left: 25px;
+}
+
+.addExpenseBtn{
+    color: #e6e6e6;
+    text-decoration: none;
+    background-color: rgb(201, 139, 46);
+    padding: 5px;
+    border-radius: 10px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.addExpenseBtn:hover{
+    background-color: rgb(126, 92, 29);
+}
+
+.expenseList{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.sideBar .expense{
+    background-color: #444446;
+    color: #e6e6e6;
+    width: 90%;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sideBar .expense:hover{
+    background-color: #303031;
+    transition: 0.3s;
+}
+
+.homepageBtn:hover, .summaryBtn:hover {
+    background-color: rgb(126, 92, 29);
+    transition: 0.3s;
+}
+
+.sideBar .expense .expense-amount{
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.sideBar .expense .expense-amount .amountDetail{
+    font-weight: bold;
+    color: rgb(255, 178, 61);
+}
+
+.sideBar .expense .expense-title{
+    font-size: 12pt;
+}
+
+
+/* add expense page ------------------------------------------------------------------------ */
+
+
+.error{
+    display: none;
+    color: red;
+}
+
+.addExpensePage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+}
+
+.addContent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.addExpensePage .formWrapper{
+    background-color: rgba(var(--widgetColor));
+    border: 2px solid var(--widgetBorder);
+    width: 30%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.addExpensePage form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+    width: 80%;
+}
+
+.addExpensePage input[type="submit"]{
+    color: #e6e6e6;
+    text-decoration: none;
+    background-color: rgb(201, 139, 46);
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.addExpensePage form #submit{
+    width: fit-content
+}
+
+.addExpensePage input[type="submit"]:hover{
+    background-color: rgb(126, 92, 29);
+}
+
+.addExpensePage label{
+    font-size: 14pt;
+}
+
+.addTop{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 43%;
+}
+
+
+/* expense detail ------------------------------------------------------------------------------- */
+
+.expenseDetail{
+    position: absolute;
+    top: 15%;
+    right: 25%;
+    background: rgb(39, 42, 49);
+    color: white;
+    border: 2px solid var(--widgetBorder);
+    padding: 16px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    min-height: 55%;
+    min-width: 40%;
+    border-radius: 20px;
+
+}
+
+.expenseDetail .formContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.expenseDetail .formContent input, .addContent input{
+    background-color: #444446;
+    color: #e6e6e6;
+    padding: 5px;
+    width: 95%;
+    border: none;
+    border-radius: 10px;
+    margin-top: 4px;    
+    font-size: 15pt;
+}
+
+.editForm label{
+    font-weight: bold;        
+    color: #e6e6e6;             
+    display: block;           
+    margin-bottom: 12px;
+    font-size: 16pt; 
+}
+
+.editForm h3{
+    font-size: 18pt;
+}
+
+.expenseDetail .deleteBtn{
+    background-color: rgba(0,0,0,0);
+    color: rgb(241, 38, 38);
+    border: 2px solid rgb(241, 38, 38);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 12pt;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.expenseDetail input:read-only{
+    cursor: default;
+}
+
+.expenseDetail .deleteBtn:hover{
+    background-color: rgb(241, 38, 38);
+    color: #e6e6e6;
+    transition: 0.2s;
+}
+
+.detailBtns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailBtns button{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: #e6e6e6;
+    font-size: 15pt;
+}
+
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    display: none;
+}
+
+body.detail-visible .overlay {
+    display: block;
+    
+}
+/* summary -------------------------------------------------------------------------------------- */
+
+.summary{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+}
+
+.months{
+    width: 55%;
+}
+
+.summary button,input{
+    cursor: pointer;
+}
+
+.backArrowWrapper{
+    min-height: 10%;
+    padding: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.summaryTop{
+    display: flex;
+    width: 100%;
+    gap: 40%;
+    align-items: center;
+}
+
+.summaryTop p{
+    font-size: 18pt;
+}
+
+.homepageBtn, .summaryBtn{
+    color: #e6e6e6;
+    font-size: 15pt;
+    text-decoration: none;
+    background-color: rgb(201, 139, 46);
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    height: fit-content;
+}
+
+.months{
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.months .collapsible{
+    background-color: #16191f;
+    font-size: 12pt;
+    color: #e6e6e6;
+    min-height: 40px;
+    min-width: 60px;
+    border:none;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.months .collapsible.open{
+    background-color: #34383f;
+}
+
+.months .collapsible:hover{
+    background-color: #34383f;
+    color: #e6e6e6;
+}
+
+.monthWrapper{
+    background-color: rgba(22, 25, 31, 0.8);
+    color: #e6e6e6;
+    border-radius: 0px 15px 15px 15px;
+    padding: 10px;
+    overflow: hidden;
+    opacity: 1;
+    transform: scaleY(1) scaleX(1);
+    transform-origin: top left;
+    transition: all 0.4s ease;
+    display: block;
+    padding: 10px;
+}
+
+.monthWrapper.collapsed {
+    max-height: 0;
+    opacity: 0;
+    transform: scaleY(0) scaleX(0);
+  }
+
+.nameMonth{
+    font-size: 13pt;
+    padding-left: 10px;
+    padding-top: 5px;
+    border-top: 2px solid rgb(255, 178, 61);
+}
+
+.expenses{
+    list-style: none;
+    
+}
+
+.summary .expenseBtn{
+    background-color: #444446;
+    color: #e6e6e6;
+    width: 85%;
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px 0px 5%;
+    text-align: center;
+}
+
+.expenseBtn:hover{
+    background-color: #303031;
+    transition: 0.3s;
+}
+
+.expenseBtn > span {
+    flex: 1;
+}
+
+.expense-title {
+    text-align: left;
+}
+
+
+
+.expense-amount {
+    text-align: right;
+}
+
+
+
+/* main widget ------------------------------------------------------------------------- */
+
+
+
+@media (width <= 1150px){
+    .appTitle{
+        display: none;
+    }
+
+    .summaryTop{
+        gap: 10px;
+    }
+
+    .months{
+        width: 90%;
+    }
+}
+
+@media (width <= 920px){
+
+
+    .content{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .appTitle{
+        display: block;
+    }
+
+    .topBar{
+        flex-direction: column;
+        height: fit-content;
+        gap: 5px;
+    }
+
+    .recentsWrapper{
+        width: 80%;
+    }
+    .main-widget #graph, .main-widget #pieChart {
+        width: 90%; 
+        max-width: none; 
+        height: 40%; 
+    }
+
+    .addContent, .addTop{
+        width: 100%;
+        padding: 0;
+    }
+
+    .addExpensePage .formWrapper{
+        width: 100%;
+    }
+}
+
+/* not found page ----------------------------------------------------------------------- */
+
+.notFound{
+    font-size: 15pt;
+}
